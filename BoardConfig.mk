@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-DEVICE_PATH := device/samsung/j4primelte
+DEVICE_PATH := device/samsung/j6primelte
 BOARD_VENDOR := samsung
 
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
@@ -32,12 +32,14 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno308
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := RG13A002KU
 TARGET_NO_BOOTLOADER := true
+TARGET_NO_RECOVERY := true
 
 # Security patch level
 VENDOR_SECURITY_PATCH := 2019-04-01
 
 # Kernel
-BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 androidboot.selinux=permissive
+BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
+BOARD_KERNEL_CMDLINE := console=tty0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x01e00000
@@ -45,7 +47,7 @@ BOARD_KERNEL_IMAGE_NAME := zImage-dtb
 TARGET_KERNEL_ARCH := arm
 TARGET_KERNEL_HEADER_ARCH := arm
 TARGET_KERNEL_SOURCE := kernel/samsung/msm8917
-TARGET_KERNEL_CONFIG := sec8917_defconfig
+TARGET_KERNEL_CONFIG := j6primelte_defconfig
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-linux-androideabi-
 
 # FM
@@ -188,8 +190,8 @@ BOARD_HAS_QCOM_WLAN := true
 BOARD_HOSTAPD_DRIVER := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_qcwcn
 BOARD_WLAN_DEVICE := qcwcn
-BOARD_WPA_SUPPLICANT_DRIVER := NL80211
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_qcwcn
+# BOARD_WPA_SUPPLICANT_DRIVER := NL80211
+# BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_qcwcn
 PRODUCT_VENDOR_MOVE_ENABLED := true
 TARGET_DISABLE_WCNSS_CONFIG_COPY := true
 WPA_SUPPLICANT_VERSION := VER_0_8_X

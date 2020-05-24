@@ -14,19 +14,23 @@
 # limitations under the License.
 
 # Inherit from those products. Most specific first.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+# $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit some common Lineage stuff
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+# $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
-# Inherit from j4primelte device
-$(call inherit-product, $(LOCAL_PATH)/device.mk)
+# Inherit some common Halium stuff.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/halium.mk)
+
+# Inherit from j6primelte device
+# $(call inherit-product, $(LOCAL_PATH)/device.mk)
+$(call inherit-product, device/samsung/j6primelte/device.mk)
 
 PRODUCT_BRAND := samsung
-PRODUCT_DEVICE := j4primelte
+PRODUCT_DEVICE := j6primelte
 PRODUCT_MANUFACTURER := samsung
-PRODUCT_NAME := lineage_j4primelte
-PRODUCT_MODEL := Galaxy J4+
+PRODUCT_NAME := lineage_j6primelte
+PRODUCT_MODEL := Galaxy J6+
 
 PRODUCT_GMS_CLIENTID_BASE := android-samsung
 TARGET_VENDOR := samsung
